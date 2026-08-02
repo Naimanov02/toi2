@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ажар — 50 жас Мерейтойы</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fcfbf7;
+            color: #2c302e;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .mobile-container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 30px rgba(0,0,0,0.08);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Music Floating Button */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        /* Section Common */
+        .section {
+            padding: 50px 25px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #f2ede4;
+        }
+
+        /* Typography */
+        .script-font {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #c5a059;
+            line-height: 1.2;
+        }
+
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #1a2e26;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .gold-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c5a059, transparent);
+            margin: 15px auto;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            background: linear-gradient(180deg, #f7f3eb 0%, #ffffff 100%);
+            padding-top: 70px;
+            padding-bottom: 60px;
+        }
+
+        .invitation-badge {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #8c8275;
+            margin-bottom: 15px;
+        }
+
+        .main-name {
+            font-size: 3.5rem;
+            color: #1a2e26;
+            font-weight: 700;
+            margin: 10px 0;
+            letter-spacing: 1px;
+        }
+
+        .jubilee-text {
+            font-size: 1.4rem;
+            color: #c5a059;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .hero-text {
+            font-size: 0.95rem;
+            color: #55514a;
+            font-weight: 300;
+            padding: 0 10px;
+            line-height: 1.8;
+        }
+
+        /* COUNTDOWN TIMER */
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .timer-card {
+            background: #faf8f5;
+            border: 1px solid #e8e2d5;
+            border-radius: 12px;
+            padding: 12px 8px;
+            min-width: 70px;
+        }
+
+        .timer-val {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #c5a059;
+            line-height: 1;
+        }
+
+        .timer-lbl {
+            font-size: 0.7rem;
+            color: #8c8275;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* LOCATION & TIME */
+        .info-box {
+            background-color: #faf8f5;
+            border-radius: 16px;
+            padding: 30px 20px;
+            margin-top: 20px;
+            border: 1px solid #ede7db;
+        }
+
+        .info-row {
+            margin-bottom: 20px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8c8275;
+        }
+
+        .info-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #1a2e26;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        .map-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 30px;
+            background: #1a2e26;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(26, 46, 38, 0.2);
+            transition: background 0.3s;
+        }
+
+        /* DRESS CODE */
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .color-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+        }
+
+        /* PROGRAM TIMELINE */
+        .timeline {
+            text-align: left;
+            margin-top: 25px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: #e2dacd;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #c5a059;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 2px #c5a059;
+        }
+
+        .timeline-time {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #c5a059;
+            font-size: 1.1rem;
+        }
+
+        .timeline-text {
+            font-size: 0.9rem;
+            color: #55514a;
+        }
+
+        /* RSVP FORM */
+        .rsvp-form {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            color: #1a2e26;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #dcd5c9;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background-color: #faf8f5;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #c5a059;
+            background-color: #ffffff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #c5a059, #a37f3a);
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(197, 160, 89, 0.3);
+            margin-top: 10px;
+        }
+
+        /* HOST SECTION */
+        .hosts-section {
+            background-color: #f7f3eb;
+            padding: 40px 20px;
+        }
+
+        .hosts-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #8c8275;
+            margin-bottom: 10px;
+        }
+
+        .hosts-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #1a2e26;
+            font-weight: 700;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            max-width: 360px;
+            width: 100%;
+        }
+
+        .modal-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #c5a059;
+        }
+
+        .modal-close {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: #1a2e26;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="music-player" id="musicBtn" onclick="toggleAudio()" title="Музыка">🎵</button>
+    <audio id="bgAudio" loop preload="none">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=waltz-of-flowers-112836.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="mobile-container">
+        
+        <!-- HERO SECTION -->
+        <section class="section hero-section">
+            <div class="invitation-badge">Мерейтойға шақыру</div>
+            <div class="script-font">Тойға шақырамыз</div>
+            <h1 class="main-name serif-font">Ажар</h1>
+            <div class="jubilee-text">50 ЖАС</div>
+            <div class="gold-divider"></div>
+            <p class="hero-text">
+                Қадірлі ағайын-туыс, бауырлар, сыйлас достар мен әріптестер!<br><br>
+                Өміріміздің мәні, шаңырағымыздың берекесі болып отырған асыл жарымыз әрі ардақты анамыз 
+                <strong>Ажардың 50 жасқа толу мерейтойына</strong> арналған салтанатты ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
+            </p>
+        </section>
+
+        <!-- TIMER SECTION -->
+        <section class="section">
+            <h2 class="section-title">Салтанатты кешке дейін</h2>
+            <div class="timer-container">
+                <div class="timer-card">
+                    <div class="timer-val" id="d">00</div>
+                    <div class="timer-lbl">күн</div>
+                </div>
+                <div class="timer-card">
+                    <div class="timer-val" id="h">00</div>
+                    <div class="timer-lbl">сағат</div>
+                </div>
+                <div class="timer-card">
+                    <div class="timer-val" id="m">00</div>
+                    <div class="timer-lbl">минут</div>
+                </div>
+                <div class="timer-card">
+                    <div class="timer-val" id="s">00</div>
+                    <div class="timer-lbl">секунд</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETAILS SECTION -->
+        <section class="section">
+            <h2 class="section-title">Тойдың өтетін орны</h2>
+            <div class="gold-divider"></div>
+            
+            <div class="info-box">
+                <div class="info-row">
+                    <div class="info-icon">📅</div>
+                    <div class="info-label">Күні мен уақыты</div>
+                    <div class="info-value">05 Тамыз 2026 жыл</div>
+                    <div style="color: #c5a059; font-weight: 600; margin-top: 2px;">Сағат 18:00</div>
+                </div>
+
+                <div class="info-row" style="margin-top: 25px;">
+                    <div class="info-icon">🏛️</div>
+                    <div class="info-label">Мекен-жайы</div>
+                    <div class="info-value">Шу қаласы</div>
+                    <div style="color: #55514a; font-size: 1.05rem;">Ресторан «Бұлбұл»</div>
+                </div>
+            </div>
+
+            <a href="https://2gis.kz" target="_blank" class="map-button">📍 2GIS арқылы картадан ашу</a>
+        </section>
+
+        <!-- DRESS CODE -->
+        <section class="section">
+            <h2 class="section-title">Дресс-код</h2>
+            <p style="font-size: 0.9rem; color: #55514a; margin-top: 10px;">
+                Кешіміздің сәнін келтіру үшін <strong>Классический</strong> стиліндегі киім үлгісін таңдауыңызды өтінеміз:
+            </p>
+            <div class="color-palette">
+                <div class="color-dot" style="background-color: #1a2e26;" title="Қою-жасыл"></div>
+                <div class="color-dot" style="background-color: #c5a059;" title="Алтын"></div>
+                <div class="color-dot" style="background-color: #ffffff; border: 1px solid #ddd;" title="Ақ"></div>
+                <div class="color-dot" style="background-color: #2c302e;" title="Классика"></div>
+            </div>
+        </section>
+
+        <!-- PROGRAMME TIMELINE -->
+        <section class="section">
+            <h2 class="section-title">Кеш бағдарламасы</h2>
+            <div class="gold-divider"></div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">18:00</div>
+                    <div class="timeline-text">Қонақтардың жиналуы & Фотосессия</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">18:30</div>
+                    <div class="timeline-text">Мерейтой иесін салтанатты қарсы алу</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">19:30</div>
+                    <div class="timeline-text">Ақ тілектер мен құттықтаулар сағаты</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">21:00</div>
+                    <div class="timeline-text">Шоу-бағдарлама & Арнайы лотерея ойнату</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">22:30</div>
+                    <div class="timeline-text">Мерекелік торт және естелік фотосессия</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP FORM -->
+        <section class="section">
+            <h2 class="section-title">Қатысуды растау</h2>
+            <p style="font-size: 0.88rem; color: #8c8275; margin-bottom: 20px;">
+                Дастархан әзірлігі үшін <strong>25 шілдеге дейін</strong> жауап беруіңізді өтінеміз:
+            </p>
+
+            <form class="rsvp-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label class="form-label">Аты-жөніңіз:</label>
+                    <input type="text" class="form-control" id="gName" placeholder="Мысалы: Арман мен Айнұр" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Кешке қатысуыңыз:</label>
+                    <select class="form-control" id="gStatus" required>
+                        <option value="">Таңдаңыз...</option>
+                        <option value="yes">Әрине, қуана қатысамыз!</option>
+                        <option value="couple">Жұбайыммен / Отбасыммен келемін</option>
+                        <option value="no">Өкінішке орай, келе алмаймын</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Мерейтой иесіне ақ тілегіңіз:</label>
+                    <textarea class="form-control" id="gWish" rows="3" placeholder="Ізгі тілектеріңіз..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">ЖАУАПТЫ ЖІБЕРУ</button>
+            </form>
+        </section>
+
+        <!-- HOSTS -->
+        <section class="section hosts-section">
+            <div class="hosts-label">Той иелері / Шақырушылар:</div>
+            <div class="hosts-value">Жұбайы мен балалары</div>
+            <div class="script-font" style="margin-top: 15px; font-size: 2.5rem;">Сіздерді күтеміз!</div>
+        </section>
+
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal" id="modalWindow">
+        <div class="modal-content">
+            <div class="modal-title">Рақмет! ✨</div>
+            <p id="modalMsg" style="margin-top: 10px; color: #55514a; font-size: 0.95rem;"></p>
+            <button class="modal-close" onclick="closeModal()">Жабу</button>
+        </div>
+    </div>
+
+    <script>
+        // Countdown
+        const target = new Date("2026-08-05T18:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = target - now;
+            if (diff > 0) {
+                document.getElementById("d").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById("h").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("m").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("s").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+
+        // Audio
+        let playing = false;
+        function toggleAudio() {
+            const audio = document.getElementById("bgAudio");
+            const btn = document.getElementById("musicBtn");
+            if (!playing) {
+                audio.play().then(() => {
+                    btn.innerHTML = "🎶";
+                    playing = true;
+                }).catch(() => {});
+            } else {
+                audio.pause();
+                btn.innerHTML = "🎵";
+                playing = false;
+            }
+        }
+
+        // Form
+        function submitForm(e) {
+            e.preventDefault();
+            const name = document.getElementById("gName").value;
+            document.getElementById("modalMsg").innerText = "Құрметті " + name + ", сіздің жауабыңыз қабылданды! Салтанатты кешті бірге бөлісуге қуаныштымыз.";
+            document.getElementById("modalWindow").style.display = "flex";
+            e.target.reset();
+        }
+
+        function closeModal() {
+            document.getElementById("modalWindow").style.display = "none";
+        }
+    </script>
+</body>
+</html>
