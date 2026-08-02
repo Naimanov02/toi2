@@ -60,6 +60,18 @@
             border-bottom: 1px solid #f2ede4;
         }
 
+        /* --- ANIMATION STYLES --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Typography */
         .script-font {
             font-family: 'Great Vibes', cursive;
@@ -388,14 +400,14 @@
 <body>
 
     <button class="music-player" id="musicBtn" onclick="toggleAudio()" title="Музыка">🎵</button>
-    <audio id="bgAudio" loop preload="none">
+    <audio id="bgAudio" loop preload="auto">
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=waltz-of-flowers-112836.mp3" type="audio/mpeg">
     </audio>
 
     <div class="mobile-container">
         
         <!-- HERO SECTION -->
-        <section class="section hero-section">
+        <section class="section hero-section fade-in">
             <div class="invitation-badge">Мерейтойға шақыру</div>
             <div class="script-font">Тойға шақырамыз</div>
             <h1 class="main-name serif-font">Ажар</h1>
@@ -409,7 +421,7 @@
         </section>
 
         <!-- TIMER SECTION -->
-        <section class="section">
+        <section class="section fade-in">
             <h2 class="section-title">Салтанатты кешке дейін</h2>
             <div class="timer-container">
                 <div class="timer-card">
@@ -432,7 +444,7 @@
         </section>
 
         <!-- DETAILS SECTION -->
-        <section class="section">
+        <section class="section fade-in">
             <h2 class="section-title">Тойдың өтетін орны</h2>
             <div class="gold-divider"></div>
             
@@ -456,7 +468,7 @@
         </section>
 
         <!-- DRESS CODE -->
-        <section class="section">
+        <section class="section fade-in">
             <h2 class="section-title">Дресс-код</h2>
             <p style="font-size: 0.9rem; color: #55514a; margin-top: 10px;">
                 Кешіміздің сәнін келтіру үшін <strong>Классический</strong> стиліндегі киім үлгісін таңдауыңызды өтінеміз:
@@ -470,7 +482,7 @@
         </section>
 
         <!-- PROGRAMME TIMELINE -->
-        <section class="section">
+        <section class="section fade-in">
             <h2 class="section-title">Кеш бағдарламасы</h2>
             <div class="gold-divider"></div>
             
@@ -499,7 +511,7 @@
         </section>
 
         <!-- RSVP FORM -->
-        <section class="section">
+        <section class="section fade-in">
             <h2 class="section-title">Қатысуды растау</h2>
             <p style="font-size: 0.88rem; color: #8c8275; margin-bottom: 20px;">
                 Дастархан әзірлігі үшін <strong>25 шілдеге дейін</strong> жауап беруіңізді өтінеміз:
@@ -531,7 +543,7 @@
         </section>
 
         <!-- HOSTS -->
-        <section class="section hosts-section">
+        <section class="section hosts-section fade-in">
             <div class="hosts-label">Той иелері / Шақырушылар:</div>
             <div class="hosts-value">Жұбайы мен балалары</div>
             <div class="script-font" style="margin-top: 15px; font-size: 2.5rem;">Сіздерді күтеміз!</div>
@@ -549,6 +561,52 @@
     </div>
 
     <script>
+        // --- SCROLL ANIMATION (Aqyryn ashylyu) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // --- AUTOMATIC AUDIO PLAY ---
+        const audio = document.getElementById("bgAudio");
+        const btn = document.getElementById("musicBtn");
+        let playing = false;
+
+        function startAudio() {
+            if (!playing) {
+                audio.play().then(() => {
+                    btn.innerHTML = "🎶";
+                    playing = true;
+                }).catch(() => {});
+            }
+        }
+
+        // Автоматты түрде қосылуға әрекет жасайды
+        window.addEventListener('load', () => {
+            startAudio();
+            // Браузерлердің автоплей бұғаттау саясатын айналып өту (пайдаланушының кез келген басуымен бірге ойнатылады)
+            document.body.addEventListener('click', startAudio, { once: true });
+            document.body.addEventListener('touchstart', startAudio, { once: true });
+            document.body.addEventListener('scroll', startAudio, { once: true });
+        });
+
+        function toggleAudio() {
+            if (!playing) {
+                audio.play();
+                btn.innerHTML = "🎶";
+                playing = true;
+            } else {
+                audio.pause();
+                btn.innerHTML = "🎵";
+                playing = false;
+            }
+        }
+
         // Countdown
         const target = new Date("2026-08-05T18:00:00").getTime();
         setInterval(() => {
@@ -561,23 +619,6 @@
                 document.getElementById("s").innerText = Math.floor((diff % (1000 * 60)) / 1000);
             }
         }, 1000);
-
-        // Audio
-        let playing = false;
-        function toggleAudio() {
-            const audio = document.getElementById("bgAudio");
-            const btn = document.getElementById("musicBtn");
-            if (!playing) {
-                audio.play().then(() => {
-                    btn.innerHTML = "🎶";
-                    playing = true;
-                }).catch(() => {});
-            } else {
-                audio.pause();
-                btn.innerHTML = "🎵";
-                playing = false;
-            }
-        }
 
         // Form
         function submitForm(e) {
