@@ -60,16 +60,20 @@
             border-bottom: 1px solid #f2ede4;
         }
 
-        /* --- ANIMATION STYLES --- */
+        /* --- ҚАТЕСІ ТҮЗЕТІЛГЕН АНИМАЦИЯ --- */
         .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
+            animation: fadeInUp 1.2s ease-out forwards;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Typography */
@@ -92,6 +96,11 @@
             letter-spacing: 2px;
             margin-bottom: 15px;
             font-weight: 600;
+        }
+
+        .section-title.large {
+            font-size: 2.3rem;
+            font-weight: 700;
         }
 
         .gold-divider {
@@ -125,10 +134,10 @@
         }
 
         .jubilee-text {
-            font-size: 1.4rem;
+            font-size: 2.2rem;
             color: #c5a059;
-            font-weight: 600;
-            letter-spacing: 3px;
+            font-weight: 700;
+            letter-spacing: 4px;
             margin-bottom: 25px;
         }
 
@@ -222,70 +231,6 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(26, 46, 38, 0.2);
             transition: background 0.3s;
-        }
-
-        /* DRESS CODE */
-        .color-palette {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .color-dot {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
-        }
-
-        /* PROGRAM TIMELINE */
-        .timeline {
-            text-align: left;
-            margin-top: 25px;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 5px;
-            bottom: 5px;
-            width: 2px;
-            background: #e2dacd;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 25px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #c5a059;
-            border: 2px solid #ffffff;
-            box-shadow: 0 0 0 2px #c5a059;
-        }
-
-        .timeline-time {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: #c5a059;
-            font-size: 1.1rem;
-        }
-
-        .timeline-text {
-            font-size: 0.9rem;
-            color: #55514a;
         }
 
         /* RSVP FORM */
@@ -401,7 +346,7 @@
 
     <button class="music-player" id="musicBtn" onclick="toggleAudio()" title="Музыка">🎵</button>
     <audio id="bgAudio" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=waltz-of-flowers-112836.mp3" type="audio/mpeg">
+        <source src="30.mp3" type="audio/mpeg">
     </audio>
 
     <div class="mobile-container">
@@ -445,14 +390,14 @@
 
         <!-- DETAILS SECTION -->
         <section class="section fade-in">
-            <h2 class="section-title">Тойдың өтетін орны</h2>
+            <h2 class="section-title large">Тойдың өтетін орны</h2>
             <div class="gold-divider"></div>
             
             <div class="info-box">
                 <div class="info-row">
                     <div class="info-icon">📅</div>
                     <div class="info-label">Күні мен уақыты</div>
-                    <div class="info-value">05 Тамыз 2026 жыл</div>
+                    <div class="info-value">05 Қыркүйек 2025 жыл</div>
                     <div style="color: #c5a059; font-weight: 600; margin-top: 2px;">Сағат 18:00</div>
                 </div>
 
@@ -460,61 +405,18 @@
                     <div class="info-icon">🏛️</div>
                     <div class="info-label">Мекен-жайы</div>
                     <div class="info-value">Шу қаласы</div>
-                    <div style="color: #55514a; font-size: 1.05rem;">Ресторан «Бұлбұл»</div>
+                    <div style="color: #55514a; font-size: 1.05rem;">Мейрамхана «Бұлбұл»</div>
                 </div>
             </div>
 
             <a href="https://2gis.kz" target="_blank" class="map-button">📍 2GIS арқылы картадан ашу</a>
         </section>
 
-        <!-- DRESS CODE -->
-        <section class="section fade-in">
-            <h2 class="section-title">Дресс-код</h2>
-            <p style="font-size: 0.9rem; color: #55514a; margin-top: 10px;">
-                Кешіміздің сәнін келтіру үшін <strong>Классический</strong> стиліндегі киім үлгісін таңдауыңызды өтінеміз:
-            </p>
-            <div class="color-palette">
-                <div class="color-dot" style="background-color: #1a2e26;" title="Қою-жасыл"></div>
-                <div class="color-dot" style="background-color: #c5a059;" title="Алтын"></div>
-                <div class="color-dot" style="background-color: #ffffff; border: 1px solid #ddd;" title="Ақ"></div>
-                <div class="color-dot" style="background-color: #2c302e;" title="Классика"></div>
-            </div>
-        </section>
-
-        <!-- PROGRAMME TIMELINE -->
-        <section class="section fade-in">
-            <h2 class="section-title">Кеш бағдарламасы</h2>
-            <div class="gold-divider"></div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-time">18:00</div>
-                    <div class="timeline-text">Қонақтардың жиналуы & Фотосессия</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">18:30</div>
-                    <div class="timeline-text">Мерейтой иесін салтанатты қарсы алу</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">19:30</div>
-                    <div class="timeline-text">Ақ тілектер мен құттықтаулар сағаты</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">21:00</div>
-                    <div class="timeline-text">Шоу-бағдарлама & Арнайы лотерея ойнату</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">22:30</div>
-                    <div class="timeline-text">Мерекелік торт және естелік фотосессия</div>
-                </div>
-            </div>
-        </section>
-
         <!-- RSVP FORM -->
         <section class="section fade-in">
             <h2 class="section-title">Қатысуды растау</h2>
             <p style="font-size: 0.88rem; color: #8c8275; margin-bottom: 20px;">
-                Дастархан әзірлігі үшін <strong>25 шілдеге дейін</strong> жауап беруіңізді өтінеміз:
+                Дастархан әзірлігі үшін жауап беруіңізді өтінеміз:
             </p>
 
             <form class="rsvp-form" onsubmit="submitForm(event)">
@@ -561,17 +463,6 @@
     </div>
 
     <script>
-        // --- SCROLL ANIMATION (Aqyryn ashylyu) ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
         // --- AUTOMATIC AUDIO PLAY ---
         const audio = document.getElementById("bgAudio");
         const btn = document.getElementById("musicBtn");
@@ -586,10 +477,8 @@
             }
         }
 
-        // Автоматты түрде қосылуға әрекет жасайды
         window.addEventListener('load', () => {
             startAudio();
-            // Браузерлердің автоплей бұғаттау саясатын айналып өту (пайдаланушының кез келген басуымен бірге ойнатылады)
             document.body.addEventListener('click', startAudio, { once: true });
             document.body.addEventListener('touchstart', startAudio, { once: true });
             document.body.addEventListener('scroll', startAudio, { once: true });
@@ -607,8 +496,8 @@
             }
         }
 
-        // Countdown
-        const target = new Date("2026-08-05T18:00:00").getTime();
+        // Countdown (05.09.2025 18:00)
+        const target = new Date("2025-09-05T18:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
             const diff = target - now;
